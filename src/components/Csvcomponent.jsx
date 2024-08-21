@@ -2,31 +2,6 @@ import React, { CSSProperties, useState } from 'react';
 import { useCSVReader } from 'react-papaparse';
 import TableComponent from './TableComponent';
 
-const styles = {
-  csvReader: {
-    display: 'flex',
-    flexDirection: 'row',
-    marginBottom: 10,
-  },
-  browseFile: {
-    width: '20%',
-  },
-  acceptedFile: {
-    border: '1px solid #ccc',
-    height: 45,
-    lineHeight: 2.5,
-    paddingLeft: 10,
-    width: '80%',
-  },
-  remove: {
-    borderRadius: 0,
-    padding: '0 20px',
-  },
-  progressBarBackgroundColor: {
-    backgroundColor: 'red',
-  },
-};
-
 
 function Csvcomponent() {
 
@@ -35,6 +10,7 @@ function Csvcomponent() {
 
   return (
     <>
+    <div className='flex justify-center items-center mt-4'>
     <CSVReader
       onUploadAccepted={(results) => {
         setAllData(results)
@@ -47,24 +23,24 @@ function Csvcomponent() {
         getRemoveFileProps,
       }) => (
         <>
-          <div style={styles.csvReader}>
-            <button type='button' {...getRootProps()} style={styles.browseFile}>
+          <div >
+            <button className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700' type='button' {...getRootProps()}>
               Browse file
             </button>
-            <div style={styles.acceptedFile}>
+            <div style={{textAlign:'center'}}>
               {acceptedFile && acceptedFile.name}
             </div>
-            <button {...getRemoveFileProps()} style={styles.remove}>
-              Remove
-            </button>
           </div>
-          <ProgressBar style={styles.progressBarBackgroundColor} />
+          <ProgressBar />
         </>
       )}
     </CSVReader>
-
+    </div>
+    <div style={{textAlign:'center', marginTop:'20px'}}>
     <TableComponent data={allData}/>
+    </div>
     </>
+    
   );
 
 }
