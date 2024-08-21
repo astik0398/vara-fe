@@ -32,7 +32,7 @@ const TableComponent = ({data}) => {
         </thead>
         <tbody>
           {rows.map((row, rowIndex) => (
-            <tr onClick={()=> handleRowSel(rowIndex)} className={`bg-white border-b dark:bg-gray-800 dark:border-gray-700 ${rowSelect == rowIndex ? 'bg-pink-400 text-white' : ''}`} key={rowIndex}>
+            <tr onClick={()=> handleRowSel(rowIndex)} className={`bg-white border-b dark:bg-gray-800 dark:border-gray-700 ${rowSelect == rowIndex ? 'bg-yellow-400 text-white' : ''}`} key={rowIndex}>
               {row.map((cell, cellIndex) => (
                 <td className={`cursor-pointer px-6 py-4 ${columnSelect == cellIndex ? 'bg-yellow-500 text-white' : ''}`} key={cellIndex}>{cell}</td>
               ))}
